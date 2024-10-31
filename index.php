@@ -6,24 +6,52 @@
     <title>Work Tracker</title>
 </head>
 <body>
-    <form>
-        <input type = "datetime-local" name="arrived_at"><br>
-        <input type = "datetime-local" name="leaved_at"><br>
-        <button>Yuborish</button>
+    <form method="post">
+        <input type="datetime-local" name="arrived_at"><br>
+        <input type="datetime-local" name="leaved_at"><br>
+        <button type="submit">Yuborish</button>
     </form>
+
     <?php
         define('WORK_TIME', 8);
-        if (isset($_GET['arrived_at'])){
-            $arrived_at = new DateTime($_GET['arrived_at']);
-            $leaved_at = new DateTime($_GET['leaved_at']);
-            $diff = $arrived_at->diff($leaved_at);
+        $pdo = new PDO("mysql:host=localhost;dbname=Work_time", "root", "root");
 
+        if (isset($_POST['arrived_at'])) {
+            $arrived_at = $_POST['arrived_at'];
+            $leaved_at = $_POST['leaved_at'];
+
+            // Insert the data into the tracker table
+            $query = "INSERT INTO tracker (arrived, leaved) VALUES (:arrived_at, :leaved_at)";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':arrived_at', $arrived_at);
+            $stmt->bindParam(':leaved_at', $leaved_at);
+            $stmt->execute();
+
+            // Display the submitted information
             echo "
-            <h1>Arrived at: " . $_GET['arrived_at'] . "</h1>
-            <h1>Leaved  at: " . $_GET['leaved_at'] . "</h1>
+            <h1>Arrived at: " . $arrived_at . "</h1>
+            <h1>Leaved  at: " . $leaved_at . "</h1>
             <h1>Full worktime: " . WORK_TIME . "</h1>
-            <h1>Worked Hours: $diff->h: $diff->i</h1>
             ";
+
+            // Fetch data from the tracker table
+            $query = "SELECT * FROM tracker"; 
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Display the table
+            echo "<h1>The table containing all information</h1>";
+            echo "<table border='1'>";
+            echo "<tr><th>ID</th><th>Arrived At</th><th>Leaved At</th></tr>";
+            foreach ($rows as $row) {
+                echo "<tr>";
+                echo "<td>" . $row["id"] . "</td>";
+                echo "<td>" . $row["arrived"] . "</td>";
+                echo "<td>" . $row["leaved"] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
         }
     ?>
 </body>
