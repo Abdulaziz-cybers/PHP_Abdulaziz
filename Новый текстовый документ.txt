@@ -1,0 +1,22 @@
+1-savol
+1970-yildan hozirgacha bo'lgan vaqtning sekundalrda ifodalanishi.
+
+2-savol
+SOLID qisqartma bo'lib, dasturiy ta'minotni ishlab chiquvchilarga toza,
+parvarish qilinadigan va kengaytiriladigan kodni yaratishda rahbarlik 
+qilish uchun mo'ljallangan beshta asosiy tamoyilni ifodalaydi.
+Ular yaxshi dizayn amaliyotlarini targ'ib qiladi va kod bazasini tushunish,
+o'zgartirish va vaqt o'tishi bilan moslashishni osonlashtiradi.
+
+S - Yagona javobgarlik printsipi:
+O - ochiq/yopiq printsip:
+L - Liskov almashtirish printsipi:
+I - Interfeysni ajratish printsipi:
+D - qaramlikni inversiya qilish printsipi:
+
+
+
+Xizmat ko'rsatish: SOLID tamoyillari vaqt o'tishi bilan tushunish, o'zgartirish va kengaytirish osonroq bo'lgan kodga olib keladi. Bu uzoq muddatli loyihalar uchun juda muhimdir.
+Sinovga yaroqlilik: SOLID tamoyillariga mos keladigan kodni tekshirish odatda osonroq, chunki bog'liqliklar aniq belgilangan va izolyatsiya qilingan.
+Kengaytirish: SOLID tamoyillari yangi xususiyatlarni qo'shishni va kodingizni o'zgaruvchan talablarga moslashtirishni osonlashtiradi.
+Hamkorlik: SOLID tamoyillari ishlab chiquvchilar o'rtasida yaxshiroq muloqot va hamkorlikni ta'minlaydi, chunki ular dizayn va kodni tashkil qilish uchun umumiy tilni ta'minlaydi. 
