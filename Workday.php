@@ -1,7 +1,7 @@
 <?php
 
 
-class TrackerManager{
+class Workday{
     public static $WORK_TIME = 8;
     public $pdo;
 
@@ -39,6 +39,14 @@ class TrackerManager{
         $stmt->bindValue(':leaved_at', $leaved_at->format('Y-m-d H:i'));
         $stmt->bindParam(':fish', $fish);
         $stmt->bindParam('required_of',$total);
+        $stmt->execute();
+        header("Location: ./index.php");
+    }
+
+    public function markAsDone(int $id){
+        $query = "Update tracker set required_of = 0 Where id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id',$id);
         $stmt->execute();
         header("Location: ./index.php");
     }

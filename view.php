@@ -8,7 +8,7 @@ class Form{
                     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha383-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             </head>
 
-            <body style="background-color:#ffebcd ">
+            <body style="background-image: url(https://cdn.culture.ru/images/74c21e43-8ea5-5846-9c11-98d40eb616fe)">
                 <div class="col-md-10 text-center">
                     <h1>WORK TIME TRACKER</h1>
                     </div>
