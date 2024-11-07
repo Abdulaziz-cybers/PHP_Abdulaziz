@@ -1,7 +1,21 @@
 <?php
 class Form{
-    public function render() {
-        echo '<form method="post" class="form d-flex justify-content-center" class="form border-radius:15px" style="background-color:coral" >
+    public function __construct() {
+        echo '<head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Work Tracker</title>
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha383-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+            </head>
+
+            <body style="background-color:#ffebcd ">
+                <div class="col-md-10 text-center">
+                    <h1>WORK TIME TRACKER</h1>
+                    </div>
+    
+    <div class="container">
+        
+        <form method="post" class="form d-flex justify-content-center class=form mt-4 p-3 rounded" style="background-color:coral" >
             <div class="row" >
                 <div class="col-md-3" >
                     <div class="form-group"> 
