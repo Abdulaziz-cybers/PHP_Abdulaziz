@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
- 
-    <?php
-        require 'view.php';
-        $form = new Form();
-        
-        require 'Conn.php';
-        require 'Workday.php';
-        require 'Display_table.php';
+<?php
 
-        $db = new Conn();
-        $pdo = $db->pdo;
+require 'WorkDay.php';
 
-        $tm = new Workday();
+$workDay = new WorkDay();
 
-        echo '<div class=col-md-10 text-center style=color:#ffebcd> <h1>.</h1> </div>';
-        if (isset($_POST['arrived_at'])) {
-            $tm->insertToTable($_POST['name'], $_POST['arrived_at'], $_POST['leaved_at']);
-        }
+if (isset($_POST['name']) && isset($_POST['arrived_at']) && isset($_POST['leaved_at'])) {
+    if (!empty($_POST['name']) && !empty($_POST['arrived_at']) && !empty($_POST['leaved_at'])) {
+        $workDay->store($_POST['name'], $_POST['arrived_at'], $_POST['leaved_at']);
+    }
+}
+$currentPage = isset($_GET['page'])  ? $_GET['page'] : 0;
+$currentPage = intval($currentPage);
+$records = $workDay->getWorkDayListWithPagination($currentPage);
 
-        if (isset($_GET['done']) && !empty($_GET['done'])){
-            $tm->markAsDone($_GET['done']);
-        }
 
-        $rows = $tm->getTrackerData();
-        $show = new displayTable($rows);
-    ?>
-</body>
-</html>
+$debt = $workDay->calculateDebtTimeForEachUser();
+if (isset($_GET['done']) && !empty($_GET['done'])) {
+    $workDay->markAsDone($_GET['done']);
+}
+
+require 'view.php';
+
+?>
